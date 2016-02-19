@@ -42,6 +42,11 @@ import java.util.stream.IntStream;
  * </table>
  * </p>
  * 
+ * <p>
+ * 		<b>Quadratic algorithm do not scale</b>
+ * 		<div>New computers may be 10x fast, but has 10x as much memory, so the problem to solve is 10x as big.</div>
+ * </p>
+ * 
  * @author jfcorugedo
  *
  */
