@@ -72,9 +72,9 @@ public class QuickFindTest {
 	@Test(timeout=1000)
 	public void performanceTest() {
 		
-		QuickFind quickFindAlgorithm = new QuickFind(60000);
+		QuickFind quickFindAlgorithm = new QuickFind(50000);
 		
-		for(int i = 1 ; i < 60000 ; i++) {
+		for(int i = 1 ; i < 50000 ; i++) {
 			quickFindAlgorithm.union(i, i-1);	
 		}		
 	}
