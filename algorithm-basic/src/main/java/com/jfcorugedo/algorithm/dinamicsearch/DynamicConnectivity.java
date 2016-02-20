@@ -57,11 +57,11 @@ public interface DynamicConnectivity {
 	void union(int p, int q);
 	
 	/**
-	 * Returns true only if there's a path between p and q
+	 * Returns true if and only if there's a path between p and q
 	 * 
 	 * @param p
 	 * @param q
 	 * @return
 	 */
-	boolean connected(int p, int q);
+	boolean isConnected(int p, int q);
 }
