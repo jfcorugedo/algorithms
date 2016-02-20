@@ -5,12 +5,12 @@ import java.util.stream.IntStream;
 /**
  * <p>
  * This implementation tries to solve Dynamic connectivity problem using an approach that
- * makes find operarionts very easy but union operations a bit expensive.
+ * makes find operations very easy but union operations a bit expensive.
  * </p>
  * 
  * <p>
- * The implementation uses an internal array of the same size of the objects represented.
- * Each index represents an object, so object 1 is represented by the element id[1] of the array.
+ * The implementation uses an internal structure of the same size of the objects represented.
+ * Each index represents an object, so object 1 is represented by the element id[1] of the structure.
  * </p>
  * Two elements, p and q, are connected if and only if id[p] is equal to id[q].
  * 
@@ -38,7 +38,7 @@ import java.util.stream.IntStream;
  * <b>Cost model</b>: number of array accesses (for read or write)
  * <table>
  * 		<tr><th>algorithm</th><th>initialize</th><th>union</th><th>find</th></tr>
- * 		<tr><td>quick-find</td><td>N</td><td>N</ttd<td>1</td></tr>
+ * 		<tr><td>quick-find</td><td>N</td><td>N</td><td>1</td></tr>
  * </table>
  * </p>
  * 
@@ -76,7 +76,7 @@ public class QuickFind implements DynamicConnectivity{
 	}
 
 	@Override
-	public boolean connected(int p, int q) {
+	public boolean isConnected(int p, int q) {
 		
 		return ids[p] == ids[q];
 	}

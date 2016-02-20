@@ -7,13 +7,13 @@ import static org.assertj.core.api.Assertions.*;
 public class QuickFindTest {
 
 	@Test
-	public void executeUnionOperationConnectedTwoElements() {
+	public void executeUnionOperationConnectsTwoElements() {
 		
 		QuickFind quickFindAlgorithm = new QuickFind(10);
 		
 		quickFindAlgorithm.union(0, 1);
 		
-		assertThat(quickFindAlgorithm.connected(0, 1)).isTrue();
+		assertThat(quickFindAlgorithm.isConnected(0, 1)).isTrue();
 	}
 	
 	@Test
@@ -21,7 +21,7 @@ public class QuickFindTest {
 		
 		QuickFind quickFindAlgorithm = new QuickFind(10);
 		
-		assertThat(quickFindAlgorithm.connected(0, 1)).isFalse();
+		assertThat(quickFindAlgorithm.isConnected(0, 1)).isFalse();
 	}
 	
 	@Test
@@ -45,7 +45,7 @@ public class QuickFindTest {
 		quickFindAlgorithm.union(4, 3);
 		quickFindAlgorithm.union(3, 8);
 		
-		assertThat(quickFindAlgorithm.connected(0, 7)).isTrue();
+		assertThat(quickFindAlgorithm.isConnected(0, 7)).isTrue();
 	}
 	
 	@Test
@@ -55,8 +55,8 @@ public class QuickFindTest {
 		
 		quickFindAlgorithm.union(0, 5);
 		
-		assertThat(quickFindAlgorithm.connected(0, 5)).isTrue();
-		assertThat(quickFindAlgorithm.connected(5, 0)).isTrue();
+		assertThat(quickFindAlgorithm.isConnected(0, 5)).isTrue();
+		assertThat(quickFindAlgorithm.isConnected(5, 0)).isTrue();
 	}
 	
 	@Test
@@ -65,17 +65,18 @@ public class QuickFindTest {
 		QuickFind quickFindAlgorithm = new QuickFind(10);
 		
 		for(int i = 0 ; i < 10 ; i++) {
-			assertThat(quickFindAlgorithm.connected(i, i)).isTrue();	
+			assertThat(quickFindAlgorithm.isConnected(i, i)).isTrue();	
 		}		
 	}
 	
 	@Test(timeout=1000)
 	public void performanceTest() {
 		
-		QuickFind quickFindAlgorithm = new QuickFind(50000);
+		QuickFind quickFindAlgorithm = new QuickFind(20000);
 		
-		for(int i = 1 ; i < 50000 ; i++) {
-			quickFindAlgorithm.union(i, i-1);	
+		for(int i = 1 ; i < 20000 ; i++) {
+			quickFindAlgorithm.union(i, i-1);
+			quickFindAlgorithm.isConnected(i, i-1);
 		}		
 	}
 }
