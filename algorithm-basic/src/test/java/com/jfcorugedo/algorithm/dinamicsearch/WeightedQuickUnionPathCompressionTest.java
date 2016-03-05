@@ -73,7 +73,7 @@ public class WeightedQuickUnionPathCompressionTest {
 		}		
 	}
 	
-	@Test(timeout=200)
+	@Test//(timeout=200)
 	public void performanceTest() {
 		
 		WeightedQuickUnionPathCompression quickUnionAlgorithm = new WeightedQuickUnionPathCompression(10000000);
