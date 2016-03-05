@@ -80,4 +80,12 @@ public class QuickFind implements DynamicConnectivity{
 		
 		return ids[p] == ids[q];
 	}
+
+	/**
+	 * This method should be used only for testing  
+	 * @return
+	 */
+	protected int[] getIds() {
+		return this.ids;
+	}
 }

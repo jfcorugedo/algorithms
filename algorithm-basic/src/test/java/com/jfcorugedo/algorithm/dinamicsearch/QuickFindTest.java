@@ -1,8 +1,8 @@
 package com.jfcorugedo.algorithm.dinamicsearch;
 
-import org.junit.Test;
+import static org.assertj.core.api.Assertions.assertThat;
 
-import static org.assertj.core.api.Assertions.*;
+import org.junit.Test;
 
 public class QuickFindTest {
 
@@ -78,5 +78,20 @@ public class QuickFindTest {
 			quickFindAlgorithm.union(i, i-1);
 			quickFindAlgorithm.isConnected(i, i-1);
 		}		
+	}
+	
+	@Test
+	public void exercise1() {
+		
+		QuickFind quickfind = new QuickFind(10);
+		
+		quickfind.union(2, 8);
+		quickfind.union(9, 4);
+		quickfind.union(5, 7);
+		quickfind.union(5, 1);
+		quickfind.union(0, 5);
+		quickfind.union(8, 0);
+		
+		assertThat(quickfind.getIds()).containsExactly(1,1,1,3,4,1,6,1,1,4);
 	}
 }
