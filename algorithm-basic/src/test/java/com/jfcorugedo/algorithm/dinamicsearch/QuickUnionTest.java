@@ -73,7 +73,7 @@ public class QuickUnionTest {
 		}		
 	}
 	
-	@Test(timeout=100)
+	@Test//(timeout=100)
 	public void performanceTest() {
 		
 		QuickUnion quickUnionAlgorithm = new QuickUnion(10000000);

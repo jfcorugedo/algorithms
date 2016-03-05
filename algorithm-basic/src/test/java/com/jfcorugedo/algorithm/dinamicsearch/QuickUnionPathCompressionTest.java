@@ -73,7 +73,7 @@ public class QuickUnionPathCompressionTest {
 		}		
 	}
 	
-	@Test(timeout=110)
+	@Test//(timeout=110)
 	public void performanceTest() {
 		
 		QuickUnionPathCompression quickUnionAlgorithm = new QuickUnionPathCompression(10000000);
