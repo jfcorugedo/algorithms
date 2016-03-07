@@ -23,7 +23,7 @@ public class WeightedQuickUnionPathCompression implements DynamicConnectivity {
 
 	private int[] tree;
 	
-	/** Mantains the size of each tree */
+	/** Maintains the size of each tree */
 	private int[] treesSize;
 	
 	/**
@@ -33,23 +33,28 @@ public class WeightedQuickUnionPathCompression implements DynamicConnectivity {
 	public WeightedQuickUnionPathCompression(int size) {
 		
 		tree = IntStream.range(0, size).toArray();
-		treesSize = new int[size];
-		Arrays.stream(treesSize).map(value -> 1).toArray();
+		treesSize = Arrays.stream(new int[size]).map(value -> 1).toArray();
 	}
 	
 	@Override
 	public void union(int p, int q) {
 		
+	    if(p == q){
+            //Both elements are the same, and this structure is reflexive: 
+            //each element is always connected to each self
+            return;
+        }
+	    
 		int rootP = findRoot(p);
 		int rootQ = findRoot(q);
 		
 		if(rootP != rootQ) {
-			if(treesSize[rootP] > treesSize[rootQ]) {
-				tree[rootQ] = rootP;
-				treesSize[rootP] += treesSize[rootQ];
+			if(treesSize[rootP] < treesSize[rootQ]) {
+			    tree[rootP] = rootQ;
+                treesSize[rootQ] += treesSize[rootP];
 			} else {
-				tree[rootP] = rootQ;
-				treesSize[rootQ] += treesSize[rootP];
+			    tree[rootQ] = rootP;
+                treesSize[rootP] += treesSize[rootQ];
 			}
 		}
 	}
@@ -75,4 +80,20 @@ public class WeightedQuickUnionPathCompression implements DynamicConnectivity {
 		
 		return currentElement;
 	}
+	
+	/**
+     * This method should be used only for testing  
+     * @return the array containing the parent of each node
+     */
+    protected int[] getTree() {
+        return tree;
+    }
+    
+    /**
+     * This method should be used only for testing  
+     * @return the array containing the size of each tree
+     */
+    protected int[] getTreesSize() {
+        return treesSize;
+    }
 }

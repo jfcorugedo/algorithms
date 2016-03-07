@@ -83,4 +83,46 @@ public class WeightedQuickUnionPathCompressionTest {
 			quickUnionAlgorithm.isConnected(0, 1);//it's the worst case
 		}		
 	}
+	
+	/**
+     * Given a set of 10 items, execute this union operations: 1-6 5-7 2-4.
+     * The result must be [0, 1, 2, 3, 2, 5, 1, 5, 8, 9]
+     * 
+     */
+    @Test
+    public void examQuestionTest() {
+        
+        WeightedQuickUnionPathCompression quickUnionAlgorithm = new WeightedQuickUnionPathCompression(10);
+        
+        quickUnionAlgorithm.union(1, 6);
+        quickUnionAlgorithm.union(5, 7);
+        quickUnionAlgorithm.union(2, 4);
+        
+        assertThat(quickUnionAlgorithm.getTree()).containsExactly(0, 1, 2, 3, 2, 5, 1, 5, 8, 9);
+        assertThat(quickUnionAlgorithm.getTreesSize()).containsExactly(1, 2, 2, 1, 1, 2, 1, 1, 1, 1);
+    }
+    
+    /**
+     * Given a set of 10 items, execute this union operations: 7-3 9-1 6-2 6-7 5-4 8-0 7-1 8-4 5-6.
+     * The result must be [8, 9, 6, 7, 5, 8, 6, 6, 6, 6]
+     * 
+     */
+    @Test
+    public void examQuestion2Test() {
+        
+        WeightedQuickUnionPathCompression quickUnionAlgorithm = new WeightedQuickUnionPathCompression(10);
+        
+        quickUnionAlgorithm.union(7, 3);
+        quickUnionAlgorithm.union(9, 1);
+        quickUnionAlgorithm.union(6, 2);
+        quickUnionAlgorithm.union(6, 7);
+        quickUnionAlgorithm.union(5, 4);
+        quickUnionAlgorithm.union(8, 0);
+        quickUnionAlgorithm.union(7, 1);
+        quickUnionAlgorithm.union(8, 4);
+        quickUnionAlgorithm.union(5, 6);
+        
+        assertThat(quickUnionAlgorithm.getTree()).containsExactly(8, 9, 6, 7, 5, 8, 6, 6, 6, 6);
+        assertThat(quickUnionAlgorithm.getTreesSize()).containsExactly(1, 1, 1, 1, 1, 2, 10, 2, 4, 2);
+    }
 }
